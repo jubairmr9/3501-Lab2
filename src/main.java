@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class main {
 
     // Wrote the quicksort method following the pseudocode from the book.
@@ -31,6 +33,12 @@ public class main {
 
         }
 
+        exchange(i+1, lastValue, pAarray);
+
+        return i+1;
+
     }
+
+    
 
 }
