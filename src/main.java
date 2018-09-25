@@ -39,6 +39,32 @@ public class main {
 
     }
 
-    
+    // The exchange method for exchanging two elements in an array.
+
+    public static void exchange(int posOne, int posTwo, TestInteger[] newArray){
+
+        //Creating a temporary array to store the value so that I can swap the elements.
+
+        TestInteger temp = newArray[posOne];
+        newArray[posOne] = newArray[posTwo];
+        newArray[posTwo] = temp;
+
+    }
+
+    public static boolean isSorted(TestInteger[] newArray){
+
+        for(int i = 1; 1 < newArray.length; i++){
+
+            if(newArray[i-1].compareTo(newArray[i]) ==1){
+
+                return false;
+
+            }
+
+        }
+
+        return true;
+
+    }
 
 }
