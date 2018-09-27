@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.lang.*;
 
 public class main {
 
@@ -39,7 +40,7 @@ public class main {
 
     }
 
-    // The exchange method for exchanging two elements in an array.
+    // The exchange method for int exchanging two elements in an array.
 
     public static void exchange(int posOne, int posTwo, TestInteger[] newArray){
 
@@ -53,7 +54,7 @@ public class main {
 
     public static boolean isSorted(TestInteger[] newArray){
 
-        for(int i = 1; 1 < newArray.length; i++){
+        for(int i = 1; i < newArray.length; i++){
 
             if(newArray[i-1].compareTo(newArray[i]) ==1){
 
@@ -64,6 +65,99 @@ public class main {
         }
 
         return true;
+
+    }
+
+    // Prints the contents of an array
+
+    public static void printArr(TestInteger[] newArray){
+
+        for(int i = 1; i < newArray.length; i++){
+            System.out.print(newArray[i].value+"\t");
+        }
+        System.out.println("");
+    }
+
+
+    public static void main(String args[]){
+
+        System.out.println("Hello");
+
+        // Declaring TestInteger and assigning values to it.
+
+        TestInteger t1, t2, t3;
+
+        t1 = new TestInteger(1);
+        t2 = new TestInteger(2);
+        t3 = new TestInteger(2);
+
+
+        System.out.println(t2.compareTo(t2));
+        System.out.println(t1.compareTo(t2));
+        System.out.println(t3.compareTo(t2));
+
+        // Checking if counter works.
+
+        System.out.println(TestInteger.counter);
+
+        // Making an array and putting values in it.
+
+        TestInteger[] testArr = new TestInteger[10];
+
+        for (int val = 0; val < 10; val++) {
+            testArr[val] = new TestInteger(val);
+        }
+
+
+        // Checking the isSorted method.
+
+        System.out.println(isSorted(testArr));
+
+        // Checking the printArr method.
+
+        printArr(testArr);
+
+        // Checking the exchange method
+
+        exchange(2, 4, testArr);
+
+        printArr(testArr);
+
+        // Testing the way to use floor
+
+        double testNum = 200.45;
+
+        System.out.println(Math.floor(testNum));
+
+        // Generating a random number to test
+
+        int x = ((int)(100+(Math.random() * 500)));
+
+        System.out.println(x);
+
+
+        // Generating random integers and putting them inside two arrays
+
+        // First array
+
+        TestInteger[] firstRandArr = new TestInteger[10000];
+
+        for (int ind = 1; ind <10001; ind++){
+
+            firstRandArr[ind] = new TestInteger(((int)(100+(Math.random() * 500))));
+
+        }
+
+        // Printing first array
+
+        printArr(firstRandArr);
+
+        TestInteger secRandArr = new TestInteger(10000);
+
+
+
+
+
 
     }
 
