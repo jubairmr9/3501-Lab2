@@ -140,11 +140,11 @@ public class main {
 
         // First array
 
-        TestInteger[] firstRandArr = new TestInteger[10000];
+        TestInteger[] firstRandArr = new TestInteger[10001];
 
-        for (int ind = 1; ind <10001; ind++){
+        for (int ind = 1; ind <= 10000; ind++){
 
-            firstRandArr[ind] = new TestInteger(((int)(100+(Math.random() * 500))));
+            firstRandArr[ind] = new TestInteger((int)(Math.random() * 1000000));
 
         }
 
@@ -152,7 +152,7 @@ public class main {
 
         printArr(firstRandArr);
 
-        TestInteger secRandArr = new TestInteger(10000);
+        TestInteger[] secRandArr = firstRandArr;
 
 
 
