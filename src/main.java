@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 import java.lang.*;
 
@@ -133,16 +134,16 @@ public class main {
 
         int x = ((int)(100+(Math.random() * 500)));
 
-        System.out.println(x);
+        System.out.println("x = " + x);
 
 
         // Generating random integers and putting them inside two arrays
 
         // First array
 
-        TestInteger[] firstRandArr = new TestInteger[10001];
+        TestInteger[] firstRandArr = new TestInteger[10000];
 
-        for (int ind = 1; ind <= 10000; ind++){
+        for (int ind = 0; ind < 10000; ind++){
 
             firstRandArr[ind] = new TestInteger((int)(Math.random() * 1000000));
 
@@ -152,8 +153,57 @@ public class main {
 
         printArr(firstRandArr);
 
+        // Making the second random array same as the first
+
         TestInteger[] secRandArr = firstRandArr;
 
+        // Getting a random number till 1000000
+
+        int y = ((int)(Math.random() * 1000000));
+
+        System.out.println("y = " + y);
+
+
+
+
+
+
+        // Lopp to run Tim Sort for the random array and time it.
+
+        for(int j = 1; j < 6; j++) {
+
+            double tSortStartTime = new Double(System.currentTimeMillis());
+
+            Arrays.sort(firstRandArr);
+
+            double tSortEndTime = new Double(System.currentTimeMillis());
+
+            double tSortTimeDifference = tSortEndTime - tSortStartTime;
+
+            System.out.println("Sorting time for time #" + j + " = " + tSortTimeDifference);
+
+
+            // Print sorted random Array
+
+            printArr(firstRandArr);
+
+        }
+
+        // Loop to run quicksort 5 times and record the time it takes
+
+        for(int i = 1; i<6; i++){
+
+            double qSortStartTime = new Double(System.currentTimeMillis());
+
+            quickSort(secRandArr, 0, secRandArr.length - 1);
+
+            double qSortEndTime = new Double(System.currentTimeMillis());
+
+            double qSortTimeDifference = qSortEndTime - qSortStartTime;
+
+            System.out.println("Sorting time for time #" + i + " = "+ qSortTimeDifference);
+
+        }
 
 
 

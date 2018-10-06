@@ -1,14 +1,16 @@
+import java.util.Arrays;
+
 public class TestInteger implements Comparable<TestInteger> {
 
     public int value;
 
     static long counter;
 
-    // Takes in an integer newValue and sets it to value.
+    // Takes in an integer indexSize and sets it to value.
 
-    TestInteger(int newValue){
+    TestInteger(int indexSize){
 
-        value = newValue;
+        value = indexSize;
 
     }
 
@@ -16,20 +18,20 @@ public class TestInteger implements Comparable<TestInteger> {
     // each other and returns a value. Also it adds to the counter every time it loops
     // through and compares another number.
 
-    public int compareTo(TestInteger that) {
+    public int compareTo(TestInteger valueToCompare) {
 
         int less = -1;
         int eq = 0;
         int greater = 1;
         counter++;
 
-        if (this.value < that.value){
+        if (this.value < valueToCompare.value){
 
             return less;
 
         }
 
-        if (this.value == that.value){
+        if (this.value == valueToCompare.value){
 
             return eq;
 
@@ -38,4 +40,5 @@ public class TestInteger implements Comparable<TestInteger> {
         else return greater;
 
         }
+
 }
