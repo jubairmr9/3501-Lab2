@@ -229,7 +229,7 @@ public class main {
 
             double tSortTimeDifference = tSortEndTime - tSortStartTime;
 
-            System.out.println("Sorting time using Tim Sort for time #" + j + " = " + tSortTimeDifference);
+            System.out.println("Sorting time on an ascending array using Tim Sort for time #" + j + " = " + tSortTimeDifference);
 
         }
 
@@ -246,11 +246,131 @@ public class main {
 
             double qSortTimeDifference = qSortEndTime - qSortStartTime;
 
-            System.out.println("Sorting time using Quick Sort for time #" + (i+1) + " = "+ qSortTimeDifference);
+            System.out.println("Sorting time on an ascending array using Quick Sort for time #" + (i) + " = "+ qSortTimeDifference);
+
+        }
+
+        // Creating arrays with 10 sorted sequences of 1000 elements each
+
+        int tenSeqInd = 0;
+
+        TestInteger[] tenSeqRandArr = new TestInteger[10000];
+
+        for(int i = 0; i< 10; i++){
+
+            int tenSeqFirValue = (int)(Math.random() * 1000000);
+
+            for(int j = tenSeqFirValue; j < tenSeqFirValue + 1000; j++){
+
+                tenSeqRandArr[tenSeqInd] = new TestInteger(j);
+                tenSeqInd++;
+
+            }
+
+        }
+
+        TestInteger[] secTenSeqRandArr = tenSeqRandArr.clone();
+
+        printArr(tenSeqRandArr);
+
+
+        // Sorting the array with Tim Sort and Quick Sort
+
+        // Loop to run Tim Sort and time it.
+
+        for(int j = 1; j < 6; j++) {
+
+            double tSortStartTime = new Double(System.currentTimeMillis());
+
+            Arrays.sort(tenSeqRandArr);
+
+            double tSortEndTime = new Double(System.currentTimeMillis());
+
+            double tSortTimeDifference = tSortEndTime - tSortStartTime;
+
+            System.out.println("Sorting time of the 10 seq. of 1000 elements using Tim Sort for time #" + j + " = " + tSortTimeDifference);
+
+            tenSeqRandArr = secTenSeqRandArr.clone();
 
         }
 
 
+        // Loop to run quicksort 5 times and record the time it takes
+
+        for(int i = 1; i<6; i++){
+
+            double qSortStartTime = new Double(System.currentTimeMillis());
+
+            quickSort(tenSeqRandArr, 0, tenSeqRandArr.length - 1);
+
+            double qSortEndTime = new Double(System.currentTimeMillis());
+
+            double qSortTimeDifference = qSortEndTime - qSortStartTime;
+
+            System.out.println("Sorting time of the 10 seq. of 1000 elements using Quick Sort for time #" + i + " = "+ qSortTimeDifference);
+
+            tenSeqRandArr = secTenSeqRandArr.clone();
+
+        }
+
+
+        // Creating arrays with 100 sorted sequences of 100 elements each
+
+        int hundredSeqInd = 0;
+
+        TestInteger[] hundredSeqRandArr = new TestInteger[10000];
+
+        for(int i = 0; i< 100; i++){
+
+            int hundredSeqFirValue = (int)(Math.random() * 1000000);
+
+            for(int j = hundredSeqFirValue; j < hundredSeqFirValue + 100; j++){
+
+                hundredSeqRandArr[hundredSeqInd] = new TestInteger(j);
+                hundredSeqInd++;
+
+            }
+
+        }
+
+        TestInteger[] secHundredSeqRandArr = hundredSeqRandArr.clone();
+
+        // Loop to run Tim Sort and time it.
+
+        for(int j = 1; j < 6; j++) {
+
+            double tSortStartTime = new Double(System.currentTimeMillis());
+
+            Arrays.sort(hundredSeqRandArr);
+
+            double tSortEndTime = new Double(System.currentTimeMillis());
+
+            double tSortTimeDifference = tSortEndTime - tSortStartTime;
+
+            System.out.println("Sorting time of the 100 seq. of 100 elements using Tim Sort for time #" + j + " = " + tSortTimeDifference);
+
+            hundredSeqRandArr = secHundredSeqRandArr.clone();
+
+        }
+
+
+        // Loop to run quicksort 5 times and record the time it takes
+
+        for(int i = 1; i<6; i++){
+
+            double qSortStartTime = new Double(System.currentTimeMillis());
+
+            quickSort(hundredSeqRandArr, 0, hundredSeqRandArr.length - 1);
+
+            double qSortEndTime = new Double(System.currentTimeMillis());
+
+            double qSortTimeDifference = qSortEndTime - qSortStartTime;
+
+            System.out.println("Sorting time of the 100 seq. of 100 elements using Quick Sort for time #" + i + " = "+ qSortTimeDifference);
+
+            hundredSeqRandArr = secHundredSeqRandArr.clone();
+
+        }
 
     }
 
