@@ -110,6 +110,7 @@ public class main {
         }
 
 
+
         // Checking the isSorted method.
 
         System.out.println(isSorted(testArr));
@@ -137,6 +138,7 @@ public class main {
         System.out.println("x = " + x);
 
 
+
         // Generating random integers and putting them inside two arrays
 
         // First array
@@ -155,22 +157,15 @@ public class main {
 
         // Making the second random array same as the first
 
-        TestInteger[] secRandArr = firstRandArr;
-
-        // Getting a random number till 1000000
-
-        int y = ((int)(Math.random() * 1000000));
-
-        System.out.println("y = " + y);
+        TestInteger[] secRandArr = firstRandArr.clone();
 
 
 
-
-
-
-        // Lopp to run Tim Sort for the random array and time it.
+        // Loop to run Tim Sort on a random array and time it.
 
         for(int j = 1; j < 6; j++) {
+
+            printArr(firstRandArr);
 
             double tSortStartTime = new Double(System.currentTimeMillis());
 
@@ -180,18 +175,22 @@ public class main {
 
             double tSortTimeDifference = tSortEndTime - tSortStartTime;
 
-            System.out.println("Sorting time for time #" + j + " = " + tSortTimeDifference);
-
-
-            // Print sorted random Array
+            System.out.println("Sorting time using Tim Sort for time #" + j + " = " + tSortTimeDifference);
 
             printArr(firstRandArr);
 
+            // Resetting the array
+
+            firstRandArr = secRandArr.clone();
+
         }
+
 
         // Loop to run quicksort 5 times and record the time it takes
 
         for(int i = 1; i<6; i++){
+
+            printArr(secRandArr);
 
             double qSortStartTime = new Double(System.currentTimeMillis());
 
@@ -201,11 +200,55 @@ public class main {
 
             double qSortTimeDifference = qSortEndTime - qSortStartTime;
 
-            System.out.println("Sorting time for time #" + i + " = "+ qSortTimeDifference);
+            System.out.println("Sorting time using Quick Sort for time #" + i + " = "+ qSortTimeDifference);
+
+            printArr(secRandArr);
+
+            secRandArr = firstRandArr.clone();
 
         }
 
 
+        // Creating a sorted array
+
+        TestInteger[] sortedArray = firstRandArr.clone();
+
+        Arrays.sort(sortedArray);
+
+        printArr(sortedArray);
+
+        // Loop to run Tim Sort on an ascending random array and time it.
+
+        for(int j = 1; j < 6; j++) {
+
+            double tSortStartTime = new Double(System.currentTimeMillis());
+
+            Arrays.sort(sortedArray);
+
+            double tSortEndTime = new Double(System.currentTimeMillis());
+
+            double tSortTimeDifference = tSortEndTime - tSortStartTime;
+
+            System.out.println("Sorting time using Tim Sort for time #" + j + " = " + tSortTimeDifference);
+
+        }
+
+
+        // Loop to run quicksort 5 times on an ascending array and record the time it takes
+
+        for(int i = 1; i<6; i++){
+
+            double qSortStartTime = new Double(System.currentTimeMillis());
+
+            quickSort(sortedArray, 0, sortedArray.length - 1);
+
+            double qSortEndTime = new Double(System.currentTimeMillis());
+
+            double qSortTimeDifference = qSortEndTime - qSortStartTime;
+
+            System.out.println("Sorting time using Quick Sort for time #" + (i+1) + " = "+ qSortTimeDifference);
+
+        }
 
 
 
